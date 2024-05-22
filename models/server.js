@@ -18,9 +18,6 @@ class Server {
            
         });
 
-        // Inicializar middlewares
-        this.middlewares();
-
         // Configurar sockets
         this.configurarSocket();
     }
@@ -36,6 +33,10 @@ class Server {
     }
 
     execute() {
+
+        // Inicializar middlewares
+        this.middlewares();
+
         // Iniciar el servidor
         this.server.listen(this.port, () => {
             console.log(`Server corriendo en el puerto: ${this.port}`);
