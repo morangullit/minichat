@@ -9,13 +9,15 @@ class Server {
 
     constructor(){
         this.app = express();
-        this.port = process.env.PORT;
+        this.port = process.env.PORT || 8080;
 
         // http server
         this.server = http.createServer( this.app );
         
         // configuraciones del socket
         this.io = socketio( this.server, {/* Configuraciones */} );
+        this.middlewares();
+        this.configurarSocket();
     }
 
     middlewares() {
@@ -29,7 +31,7 @@ class Server {
     execute () {
 
         // Inicializar Middlewares
-        this.middlewares();
+        //this.middlewares();
 
         // Inicializar Server
         this.server.listen( this.port, () => {
