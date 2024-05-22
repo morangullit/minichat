@@ -28,7 +28,7 @@ class Server {
     middlewares() {
         // Servir archivos estáticos
         this.app.use(express.static(path.resolve(__dirname, '../public')));
-        this.app.use(cors());
+        this.app.use(cors({ origin: true, credentials: true }));
     }
 
     configurarSocket() {
